@@ -26,6 +26,7 @@ namespace CIeT.DesafioTecnico.Application
             
             builder.RegisterType<ValidadorInputUsuario>().As<IValidadorInputUsuario>();
             builder.RegisterType<CalculadoraFila>().As<ICalculadoraFila>();
+            builder.RegisterType<RegrasJogo>().As<IRegrasJogo>();
 
             builder.RegisterType<MenuSistema>().As<IMenuSistema>()
                 .WithParameter(
@@ -35,7 +36,11 @@ namespace CIeT.DesafioTecnico.Application
                 .WithParameter(
                     new ResolvedParameter(
                        (pi, ctx) => pi.ParameterType == typeof(IValidadorInputUsuario),
-                       (pi, ctx) => ctx.Resolve<IValidadorInputUsuario>()));
+                       (pi, ctx) => ctx.Resolve<IValidadorInputUsuario>()))
+                .WithParameter(
+                    new ResolvedParameter(
+                       (pi, ctx) => pi.ParameterType == typeof(IRegrasJogo),
+                       (pi, ctx) => ctx.Resolve<IRegrasJogo>()));
             return builder.Build();
         }
     }

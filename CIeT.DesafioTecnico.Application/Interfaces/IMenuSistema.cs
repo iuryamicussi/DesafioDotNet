@@ -7,6 +7,6 @@ namespace CIeT.DesafioTecnico.Application.Interfaces
     public interface IMenuSistema
     {
         void IniciaJogo();
-        void MensagemInputInvalido();
+        void MensagemInputInvalido(string mensagem = "");
     }
 }
